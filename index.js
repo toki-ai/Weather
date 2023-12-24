@@ -6,7 +6,6 @@ const app = express();
 const port = 3000; 
 
 app.use(bodyParser.urlencoded ({extended: true}));
-
 const API_URL = "http://api.weatherstack.com/current";
 const apiKey = "b009db1e90dbc715fb1246de36a7e4e8"; 
 
@@ -26,5 +25,5 @@ app.post("/submit", async(req, res)=> {
 });
 
 app.listen(port, ()=>{
-    console.log(`Your server already in port.`);
+    console.log(`Your server already in ${port} port.`);
 });
