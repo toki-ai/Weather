@@ -4,23 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+                spacing:  {
+                "80": '80px',
+                "500": '500px',
+                "64": '64px',
+              }
+            }
+        }}
+      </script>
     <title>Weather </title>
     <link rel="icon" href="https://cdn.iconscout.com/icon/free/png-256/free-weather-191-461610.png?f=webp">
 </head>
-<body>
-<% if(locals.content){ %>
-    <h1>The weather today in <%= content.request.query %>.</h1>
+<body class="bg-stone-50">
+<% if(locals.content && locals.location){ %>
+    <h2 class="text-2xl text-center mt-9 font-medium">The weather in <%= content.request.query %> is: </h2>
+    <div class="flex items-center justify-center items-center mt-9"> 
+        <span class="text-4xl px-6 font-bold"> <%= content.current.weather_descriptions[0] %> </span>
+        <img class="rounded" src="<%= content.current.weather_icons[0] %>">
+    </div>
 <% } else{ %>
-    <h1 class="">Hello, my friend!</h1>
-    <form action="/submit" method="POST">
-        <label for="location">Your location:</label>
-        <input type="text" id="location" name="diachi">
-        <button type="submit" class="bg-sky-400 h-5 w-27">Submit</button>
+    <h1 class="text-3xl text-center mt-9 font-medium">Hello, my friend!</h1>
+    <form action="/submit" method="POST" class="mb-9 mt-9 flex items-center justify-center flex-wrap">
+        <div class="flex items-center justify-center w-full">
+            <label for="location">Your location:</label>
+            <input type="text" id="location" name="diachi" placeholder="Enter your city"
+            class="ml-4 mt-1 p-2 border rounded-md w-500 focus:outline-none focus:border-blue-500">
+        </div>
+        <button type="submit" class="mt-4 bg-sky-400 h-10 w-80 mb-9 text-white rounded mx-auto" >Submit</button>
     </form>
 <% } %>
 <footer class="text-center mt-9">
         <p class="">©2023 All Rights Reserved.</p>
 </footer>
-    
 </body>
 </html>

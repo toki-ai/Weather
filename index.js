@@ -17,7 +17,7 @@ app.post("/submit", async(req, res)=> {
     const location = req.body.diachi;
     try {
         const respone = await axios.get(API_URL + "?access_key=" + apiKey + "&query=" + location);
-        res.render("index.ejs", {content: respone.data});
+        res.render("index.ejs", {location, content: respone.data});
     } catch (error){
         console.log(error.message); 
         res.render("index.ejs", {content: "error" + error.message});
