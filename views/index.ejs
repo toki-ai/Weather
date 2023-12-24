@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Weather </title>
+    <link rel="icon" href="https://cdn.iconscout.com/icon/free/png-256/free-weather-191-461610.png?f=webp">
+</head>
+<body>
+<% if(locals.content){ %>
+    <h1>The weather today in <%= content.request.query %>.</h1>
+<% } else{ %>
+    <h1 class="">Hello, my friend!</h1>
+    <form action="/submit" method="POST">
+        <label for="location">Your location:</label>
+        <input type="text" id="location" name="diachi">
+        <button type="submit" class="bg-sky-400 h-5 w-27">Submit</button>
+    </form>
+</>
+<% } %>
+<footer class="text-center mt-9">
+        <p class="">©2023 All Rights Reserved.</p>
+</footer>
+    
+</body>
+</html>
